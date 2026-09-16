@@ -1,0 +1,33 @@
+:root {
+  --bg:             #000000;
+  --bg-surface:     #0d0d0d;
+  --bg-card:        #111111;
+  --bg-elevated:    #1a1a1a;
+  --bg-input:       #1c1c1c;
+
+  --accent:         #a78bfa;
+  --accent-dim:     #7c5fe6;
+  --accent-glow:    rgba(167, 139, 250, 0.18);
+  --accent-deep:    #4c1d95;
+
+  --success:        #34d399;
+  --success-glow:   rgba(52, 211, 153, 0.2);
+  --warning:        #fbbf24;
+  --danger:         #f87171;
+
+  --text-primary:   #ffffff;
+  --text-secondary: #8a8a9a;
+  --text-muted:     #484858;
+
+  --border:         rgba(255, 255, 255, 0.06);
+  --border-subtle:  rgba(255, 255, 255, 0.04);
+  --border-accent:  rgba(167, 139, 250, 0.3);
+
+  --radius-sm:      8px;
+  --radius:         14px;
+  --radius-lg:      22px;
+  --transition:     all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow:         0 8px 40px rgba(0, 0, 0, 0.7);
+  --font:           'Inter', system-ui, -apple-system, sans-serif;
+}
+
