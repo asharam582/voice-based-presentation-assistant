@@ -147,6 +147,9 @@ input, textarea { font-family: var(--font); }
   color: var(--text-muted); font-size: 0.76rem; text-align: center;
   min-height: 1.2rem; transition: var(--transition); letter-spacing: 0.02em;
 }
+.voice-hint .key-hint {
+  display: block; margin-top: 0.4rem; opacity: 0.7; font-size: 0.7rem;
+}
 .nav-footer {
   grid-column: 1 / -1; grid-row: 2;
   background: var(--bg-surface); border-top: 1px solid var(--border);
