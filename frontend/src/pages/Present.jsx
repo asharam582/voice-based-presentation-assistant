@@ -150,6 +150,51 @@ export default function Present() {
     navigate('/')
   }
 
+  useEffect(() => {
+    const onKeyDown = (e) => {
+      if (e.metaKey || e.ctrlKey || e.altKey || e.repeat) return
+      const t = e.target
+      if (t.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT'].includes(t.tagName)) return
+
+      const last = slidesRef.current.length - 1
+      const cur = currentSlideRef.current
+      const goTo = (idx) => {
+        const clamped = Math.max(0, Math.min(last, idx))
+        if (clamped !== cur) handleSlideSelect(clamped)
+      }
+
+      switch (e.code === 'Space' ? ' ' : e.key) {
+        case 'ArrowRight':
+        case 'PageDown':
+        case ' ':
+          goTo(cur + 1)
+          break
+        case 'ArrowLeft':
+        case 'PageUp':
+          goTo(cur - 1)
+          break
+        case 'Home':
+          goTo(0)
+          break
+        case 'End':
+          goTo(last)
+          break
+        case 'Escape':
+          handleInterrupt()
+          break
+        case 'q':
+        case 'Q':
+          handleExit()
+          break
+        default:
+          return
+      }
+      e.preventDefault()
+    }
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [handleSlideSelect, handleInterrupt]) // eslint-disable-line
+
   if (slides.length === 0) return null
 
   return (
@@ -176,6 +221,7 @@ export default function Present() {
           {speechState === 'listening' && (
             <span>Ask anything about these slides</span>
           )}
+          <span className="key-hint">← → navigate · Esc interrupt · Q exit</span>
         </div>
       </aside>
 
